@@ -9,7 +9,7 @@ hbs.registerPartials(__dirname + '/views/partials');
 // Templating engine: http://handlebarsjs.com/
 app.set('view engine', 'hbs');
 
-// Middleware 
+// Middleware
 app.use((req, res, next) =>{
   var now = new Date().toString();
   var log = `${now}: ${req.method} ${req.url}`;
@@ -39,15 +39,19 @@ hbs.registerHelper('screamIt', (text) => text.toUpperCase());
 app.get('/', (req, res) => {
   res.render('home.hbs', {
     pageTitle: 'Homepage',
-    currentYear: new Date().getFullYear(),
     welcomeMessage: 'Welcome to BeYou.com'
+  });
+});
+
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'My Projects'
   });
 });
 
 app.get('/about', (req, res) => {
   res.render('about.hbs', {
-    pageTitle: 'About page',
-    currentYear: new Date().getFullYear()
+    pageTitle: 'About page'
   });
 });
 
